@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrine's Advanced Scientific Calculator</title>
+
+    <!-- open graph / social media embed tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Corrine's Advanced Scientific Calculator">
+    <meta property="og:description" content="Existing since November 30, 2025.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1364867071703384075/1444502624756961633/Banner.png?ex=692cf167&is=692b9fe7&hm=f3db639a9997992134415252aed789ad73daeb5e3b76cc41a7e6620ef55a304c">
+
+    <!-- twitter card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Corrine's Advanced Scientific Calculator">
+    <meta name="twitter:description" content="Existing since November 30, 2025.">
+    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1364867071703384075/1444502624756961633/Banner.png?ex=692cf167&is=692b9fe7&hm=f3db639a9997992134415252aed789ad73daeb5e3b76cc41a7e6620ef55a304c">
+
+    <!-- theme color (for browser UI and embeds) -->
+    <meta name="theme-color" content="#FFFFFF">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- custom favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'%3E%3Crect width='256' height='256' rx='32' fill='white'/%3E%3Cpath d='M99.8751 156.189C122.743 179.062 128.011 208 128.011 208C128.011 208 131.441 189.357 144.604 170.181C147.851 165.447 151.652 160.685 156.171 156.166C179.039 133.29 208 127.998 208 127.998C208 127.998 186.142 124.009 165.373 107.948C162.263 105.532 159.153 102.871 156.148 99.8628C133.279 76.9932 127.989 48 127.989 48C127.989 48 124.611 66.6433 111.448 85.8714C108.201 90.6045 104.371 95.3636 99.8523 99.8856C76.9546 122.762 48 128.024 48 128.024C48 128.024 69.8839 132.014 90.6528 148.074C93.766 150.52 96.8695 153.184 99.8751 156.189Z' fill='black'/%3E%3C/svg%3E">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Corrine's Advanced Scientific Calculator</h1>
+
+        <div class="calculator-wrapper">
+            <!-- main calculator -->
+            <div class="calculator">
+                <div class="display-container">
+                    <div id="history-display" class="history-display"></div>
+                    <input type="text" id="display" class="display" readonly value="0">
+                </div>
+
+                <div class="memory-buttons">
+                    <button onclick="calculator.memoryClear()">MC</button>
+                    <button onclick="calculator.memoryRecall()">MR</button>
+                    <button onclick="calculator.memoryAdd()">M+</button>
+                    <button onclick="calculator.memorySubtract()">M-</button>
+                    <button id="memory-indicator" class="memory-indicator">M</button>
+                </div>
+
+                <div class="buttons">
+                    <button class="clear" onclick="calculator.clearAll()">C</button>
+                    <button class="clear" onclick="calculator.clearEntry()">CE</button>
+                    <button class="backspace-btn" onclick="calculator.backspace()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><defs><mask id="backspaceIcon"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M18.424 10.538A2 2 0 0 1 19.788 10H42a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2H19.788a2 2 0 0 1-1.364-.538L4 24z"/><path stroke="#000" d="M36 19L26 29m0-10l10 10"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#backspaceIcon)"/></svg>
+                    </button>
+                    <button class="operator" onclick="calculator.appendOperator('/')">/</button>
+                    <button onclick="calculator.appendOperator('%')">%</button>
+
+                    <button class="sci" onclick="calculator.appendFunction('sin')">sin</button>
+                    <button class="sci" onclick="calculator.appendFunction('cos')">cos</button>
+                    <button class="sci" onclick="calculator.appendFunction('tan')">tan</button>
+                    <button class="operator" onclick="calculator.appendOperator('*')">×</button>
+                    <button class="sci" onclick="calculator.appendFunction('log')">log</button>
+
+                    <button class="sci" onclick="calculator.appendFunction('asin')">sin⁻¹</button>
+                    <button class="sci" onclick="calculator.appendFunction('acos')">cos⁻¹</button>
+                    <button class="sci" onclick="calculator.appendFunction('atan')">tan⁻¹</button>
+                    <button class="operator" onclick="calculator.appendOperator('-')">−</button>
+                    <button class="sci" onclick="calculator.appendFunction('ln')">ln</button>
+
+                    <button onclick="calculator.appendDigit('7')">7</button>
+                    <button onclick="calculator.appendDigit('8')">8</button>
+                    <button onclick="calculator.appendDigit('9')">9</button>
+                    <button class="operator" onclick="calculator.appendOperator('+')">+</button>
+                    <button class="sci" onclick="calculator.appendFunction('sqrt')">√</button>
+
+                    <button onclick="calculator.appendDigit('4')">4</button>
+                    <button onclick="calculator.appendDigit('5')">5</button>
+                    <button onclick="calculator.appendDigit('6')">6</button>
+                    <button class="sci" onclick="calculator.appendOperator('^')">xʸ</button>
+                    <button class="sci" onclick="calculator.appendFunction('cbrt')">∛</button>
+
+                    <button onclick="calculator.appendDigit('1')">1</button>
+                    <button onclick="calculator.appendDigit('2')">2</button>
+                    <button onclick="calculator.appendDigit('3')">3</button>
+                    <button onclick="calculator.appendParenthesis('(')">(</button>
+                    <button onclick="calculator.appendParenthesis(')')">)</button>
+
+                    <button onclick="calculator.appendDigit('0')">0</button>
+                    <button onclick="calculator.appendDecimal()">.</button>
+                    <button onclick="calculator.appendConstant('π')">π</button>
+                    <button onclick="calculator.appendConstant('e')">e</button>
+                    <button class="eq" onclick="calculator.calculate()">=</button>
+                </div>
+            </div>
+
+            <!-- side panel -->
+            <div class="side-panel">
+                <!-- tabs -->
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('history')">History</button>
+                    <button class="tab" onclick="showTab('converter')">Converter</button>
+                    <button class="tab" onclick="showTab('solver')">Solver</button>
+                </div>
+
+                <!-- history tab -->
+                <div id="history-tab" class="tab-content active">
+                    <div id="history-list" class="history-list"></div>
+                    <button class="clear-history" onclick="calculator.clearHistory()">Clear History</button>
+                </div>
+
+                <!-- unit Converter Tab -->
+                <div id="converter-tab" class="tab-content">
+                    <select id="converter-type" onchange="converter.changeType()">
+                        <option value="length">Length</option>
+                        <option value="weight">Weight</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="area">Area</option>
+                        <option value="volume">Volume</option>
+                        <option value="speed">Speed</option>
+                    </select>
+                    <input type="number" id="converter-input" placeholder="Enter value" oninput="converter.convert()">
+                    <select id="converter-from" onchange="converter.convert()"></select>
+                    <span class="converter-arrow">→</span>
+                    <select id="converter-to" onchange="converter.convert()"></select>
+                    <div id="converter-result" class="converter-result">Result: --</div>
+                </div>
+
+                <!-- equation solver tab -->
+                <div id="solver-tab" class="tab-content">
+                    <select id="equation-type" onchange="solver.changeType()">
+                        <option value="linear">Linear (ax + b = 0)</option>
+                        <option value="quadratic">Quadratic (ax² + bx + c = 0)</option>
+                        <option value="system">System of 2 Equations</option>
+                    </select>
+                    <div id="solver-inputs"></div>
+                    <button class="solve-btn" onclick="solver.solve()">Solve</button>
+                    <div id="solver-result" class="solver-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="calculator.js"></script>
+    <script src="converter.js"></script>
+    <script src="solver.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
